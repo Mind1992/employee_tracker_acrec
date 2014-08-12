@@ -10,11 +10,13 @@ def main_menu
   until user_input == '0'
     puts "1: add employee"
     puts "2: list all the employees"
+    puts "3: add division"
     puts "0: exit"
     user_input = gets.chomp
     case user_input
       when "1" then add_employee
       when "2" then list_employees
+      when "3" then add_division
       when "0" then exit
       else
         puts "There is no such command"
@@ -39,6 +41,11 @@ def list_employees
     counter += 1
   end
   puts "\n\n"
+end
+
+def add_division
+  puts "\n\n"
+  print "Type in the division's name: "; division_name = gets.chomp
 end
 
 
