@@ -9,6 +9,7 @@ ActiveRecord::Base.establish_connection(development_configuration)
 def main_menu
   user_input = nil
   until user_input == '0'
+    puts "***Commands***"
     puts "1: add employee"
     puts "2: list all the employees"
     puts "3: add division"
@@ -63,6 +64,16 @@ def list_divisions
   Division.all.each do |division|
     puts "#{counter.to_s}. #{division.name}"
     counter += 1
+  end
+  until user_input == '0'
+    puts "***Commands***"
+    puts "1: add employee to division"
+    puts "0: main menu"
+    user_input = gets.chomp
+    case user_input
+    when "1" then add_employee_to_division
+    when "0" then main_menu
+    end
   end
   puts "\n\n"
 end
