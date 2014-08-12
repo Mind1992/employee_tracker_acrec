@@ -1,5 +1,6 @@
 require 'active_record'
 require './lib/employee'
+require './lib/division'
 
 database_configurations = YAML::load(File.open('./db/config.yml'))
 development_configuration = database_configurations['development']
@@ -46,6 +47,9 @@ end
 def add_division
   puts "\n\n"
   print "Type in the division's name: "; division_name = gets.chomp
+  division = Division.new({:name => division_name})
+  division.save
+  puts "* '#{division_name} * has been added to the system"
 end
 
 
