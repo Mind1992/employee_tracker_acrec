@@ -12,12 +12,14 @@ def main_menu
     puts "1: add employee"
     puts "2: list all the employees"
     puts "3: add division"
+    puts "4: list all the divisions"
     puts "0: exit"
     user_input = gets.chomp
     case user_input
       when "1" then add_employee
       when "2" then list_employees
       when "3" then add_division
+      when "4" then list_divisions
       when "0" then exit
       else
         puts "There is no such command"
@@ -31,6 +33,8 @@ def add_employee
   employee = Employee.new({:name => employee_name})
   employee.save
   puts "* '#{employee_name}' * has been added to the system."
+  puts "Add the employee to a division: "
+
 end
 
 def list_employees
@@ -50,6 +54,17 @@ def add_division
   division = Division.new({:name => division_name})
   division.save
   puts "* '#{division_name} * has been added to the system"
+end
+
+def list_divisions
+  puts "\n\n"
+  puts "Here are all the divisions: "
+  counter = 1;
+  Division.all.each do |division|
+    puts "#{counter.to_s}. #{division.name}"
+    counter += 1
+  end
+  puts "\n\n"
 end
 
 
